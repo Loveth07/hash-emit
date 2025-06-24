@@ -1,21 +1,34 @@
 [project]
 name = "hash-emit"
-description = ""
-authors = []
+authors = ["HashEmit Team"]
+description = "Decentralized hash tracking and event management platform"
 telemetry = false
-cache_dir = "./.cache"
+requirements = []
+[contracts.hash-emit-access]
+path = "contracts/hash-emit-access.clar"
+depends_on = []
 
-# [contracts.counter]
-# path = "contracts/counter.clar"
+[contracts.hash-emit-core]
+path = "contracts/hash-emit-core.clar"
+depends_on = []
+
+[contracts.hash-emit-integrity]
+path = "contracts/hash-emit-integrity.clar"
+depends_on = []
+
+[contracts.hash-emit-metadata]
+path = "contracts/hash-emit-metadata.clar"
+depends_on = []
+
+[repl]
+costs_version = 2
+parser_version = 2
 
 [repl.analysis]
 passes = ["check_checker"]
-check_checker = { trusted_sender = false, trusted_caller = false, callee_filter = false }
 
-# Check-checker settings:
-# trusted_sender: if true, inputs are trusted after tx_sender has been checked.
-# trusted_caller: if true, inputs are trusted after contract-caller has been checked.
-# callee_filter: if true, untrusted data may be passed into a private function without a
-# warning, if it gets checked inside. This check will also propagate up to the
-# caller.
-# More informations: https://www.hiro.so/blog/new-safety-checks-in-clarinet
+[repl.analysis.check_checker]
+strict = false
+trusted_sender = false
+trusted_caller = false
+callee_filter = false
